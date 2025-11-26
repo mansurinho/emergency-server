@@ -7,6 +7,9 @@ dotenv.config();
 
 
 const app = express();
+app.get("/", (req, res) => {
+    res.send("Emergency server is running.");
+});
 app.use(cors());
 app.use(express.json());
 
@@ -158,7 +161,8 @@ app.post("/ai-chat", async (req, res) => {
 });
 
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
